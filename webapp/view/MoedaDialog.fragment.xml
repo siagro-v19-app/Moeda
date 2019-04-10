@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core">
+   <Dialog
+		id="MoedaDialog"
+		title="{view>/titulo}"
+		class="sapUiSmallMargin">
+   	
+   		<VBox id="vBoxMoeda" class="sapUiSmallMargin sapUiSizeCompact">	
+			<Label text="Código:" labelFor="codigo"/>
+			<Input value="{Codigo}" id="codigo" required="true" editable="{view>/codigoEdit}"/>
+			
+			<Label text="Nome:" labelFor="nome"/>
+			<Input value="{Nome}" id="nome" required="true"/>
+			
+			<Label text="Símbolo:" labelFor="simbolo"/>
+			<Input value="{Simbolo}" id="simbolo" required="true"/>
+		</VBox>
+   		
+   		<buttons>
+   			<Button text="Salvar" press="onSaveDialog"/>
+   			<Button text="Fechar" press="onCloseDialog"/>
+   		</buttons>
+   </Dialog>
+</core:FragmentDefinition>
