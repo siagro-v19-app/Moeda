@@ -1,12 +1,25 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"sap/m/MessageBox"
-], function(Controller, MessageBox) {
+	"sap/m/MessageBox",
+	"sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator"
+], function(Controller, MessageBox, Filter, FilterOperator) {
 	"use strict";
 
 	return Controller.extend("br.com.idxtecMoeda.controller.Moeda", {
 		onInit: function(){
 			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
+		},
+		
+		filtraMoeda: function(oEvent){
+			var sQuery = oEvent.getParameter("query");
+			var oFilter = new Filter("Nome", FilterOperator.Contains, sQuery);
+			
+			var aFilters = [
+				oFilter
+			];
+
+			this.getView().byId("tableMoeda").getBinding("rows").filter(aFilters, "Application");
 		},
 		
 		onRefresh: function(){
